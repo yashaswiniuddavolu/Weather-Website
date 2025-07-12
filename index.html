@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Weather dashboard with current conditions and forecasts">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <div class="main-container">
+    <div class="content-box">
+      <div class="container">
+        <aside class="sidebar">
+          <div class="logo" aria-label="Weather Dashboard">WD</div>
+          <nav class="menu" aria-label="Main navigation">
+            <button class="menu-item active" aria-label="Home" aria-current="page">🏠</button>
+            <button class="menu-item" aria-label="Forecast">🌦️</button>
+            <button class="menu-item" aria-label="Statistics">📊</button>
+            <button class="menu-item" aria-label="Settings">⚙️</button>
+          </nav>
+        </aside>
+
+        <main class="main">
+          <header class="top-bar">
+            <h1>Weather Dashboard</h1>
+            <p id="currentDate" aria-live="polite">Loading date...</p>
+          </header>
+          
+          <section class="search-section" aria-labelledby="searchHeading">
+            <h2 id="searchHeading" class="visually-hidden">Search for weather</h2>
+            <div class="search-container">
+              <input 
+                type="text" 
+                id="cityInput" 
+                placeholder="Enter city name" 
+                aria-label="City name"
+              />
+              <button onclick="getWeather()" aria-label="Search weather">Search</button>
+              <button onclick="getLocation()" aria-label="Use current location">📍</button>
+            </div>
+            <div id="errorMsg" class="error-message" aria-live="assertive"></div>
+          </section>
+
+          <section class="weather-today" aria-labelledby="currentWeatherHeading">
+            <h2 id="currentWeatherHeading" class="visually-hidden">Current weather</h2>
+            <div class="weather-box" id="currentWeather">
+              <div class="weather-temp">--°C</div>
+              <div class="weather-condition">--</div>
+              <div class="weather-location">Search for a city</div>
+            </div>
+
+            <div class="highlight" id="weatherHighlights">
+              <div class="highlight-box">
+                <div><strong>Sunrise:</strong> --:-- AM</div>
+                <div><strong>Sunset:</strong> --:-- PM</div>
+                <div><strong>Wind:</strong> -- km/h</div>
+                <div><strong>UV:</strong> --</div>
+                <div><strong>Humidity:</strong> --%</div>
+                <div><strong>Visibility:</strong> -- km</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="forecast" aria-labelledby="forecastHeading">
+            <h2 id="forecastHeading" class="visually-hidden">Weather forecast</h2>
+            <div class="forecast-box" id="forecastContainer">
+              <h3>5 Days Forecast</h3>
+              <div class="days" id="forecastDays">
+                <div class="day">--<br/>--<br/>--°C</div>
+                <div class="day">--<br/>--<br/>--°C</div>
+                <div class="day">--<br/>--<br/>--°C</div>
+                <div class="day">--<br/>--<br/>--°C</div>
+                <div class="day">--<br/>--<br/>--°C</div>
+              </div>
+            </div>
+
+            <div class="rainfall-box">
+              <h3>Weather Distribution</h3>
+              <div class="chart" aria-label="Weather distribution chart">
+                <div class="pie sun" id="weatherSun" aria-label="Sunny percentage">--%</div>
+                <div class="pie rain" id="weatherRain" aria-label="Rainy percentage">--%</div>
+              </div>
+            </div>
+
+            <div class="other-countries">
+              <h3>Major Cities</h3>
+              <div class="country" id="city1" tabindex="0">
+                <div>London, UK<br/>-- --°C</div>
+              </div>
+              <div class="country" id="city2" tabindex="0">
+                <div>New York, US<br/>-- --°C</div>
+              </div>
+              <div class="country" id="city3" tabindex="0">
+                <div>Tokyo, Japan<br/>-- --°C</div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
